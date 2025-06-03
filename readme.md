@@ -58,7 +58,7 @@ Continue with the "Chat setup". The URLs displayed are the endpoints to connect 
 
 ### Use your own project files
 - Make sure your project file has an input of type "chat-message" and array checked (Type: chat-message[])
-- Rename all "Chat" nodes you want to have streaming output to "output"
+- Rename the "Chat" node you want to have streaming output to "output"
 - Select a main graph in "Project" settings
 - Add your file into the /rivet folder and remember the filename
 
@@ -73,8 +73,23 @@ Rivet.globalRivetNodeRegistry.registerPlugin(rivetMongoDbPlugin(Rivet));
 ```
 
 ---
-## Chat setup
-We are using "Chatbot-UI" as it is a very user friendly UI (similiar to ChatGPTs UI): https://github.com/mckaywrigley/chatbot-ui
+## Graph Config
+- in `/config` you need to set the proper input name and output node name
+- input must accept an array of ChatMessage `chat-message[]`
+see video: https://youtu.be/dM8hiOMnMzU?t=564
+
+## Open Chat Playground (simplest hosted method)
+You can find many open source chat clients.
+For example: [Open Chat Playground](https://github.com/abetlen/open-chat-playground)
+You can just use their statically hosted Github Page: 
+https://abetlen.github.io/open-chat-playground/
+- set BaseURL to your localhost endpoint, CORS should be enabled
+- set Model to `example.rivet-project` or which ever rivet project in your rivet directory you want to run 
+
+There are many other open source chat UI you can use.
+
+### Chatbot-UI
+"Chatbot-UI" as it is a very user friendly UI (similiar to ChatGPTs UI): https://github.com/mckaywrigley/chatbot-ui
 
 ### Software installation (prerequisites)
 1. Install **Docker**: https://docs.docker.com/engine/install/

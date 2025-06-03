@@ -16,11 +16,14 @@ app.use((req, res, next) => {
     console.log(`Received ${req.method} request for ${req.url}`);
     next();
 });
-app.use(cors({
+const corsConfig = {
     origin: process.env.ACCESS_CONTROL_ALLOW_ORIGIN || '*',
     methods: ['GET', 'POST', 'OPTIONS'], // Specify the methods you want to allow
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+    allowedHeaders: '*',
+    exposedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsConfig));
+console.log('CORS configuration:', corsConfig);
 // Middleware for API Key validation in production
 app.use((req, res, next) => {
     //console.log('Request Headers:', JSON.stringify(req.headers, null, 2));
